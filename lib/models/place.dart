@@ -21,7 +21,8 @@ class Place {
     required this.title,
     required this.image,
     required this.location,
-  }) : id = uuid.v4();
+    String? id,
+  }) : id = id ?? uuid.v4(); // keep id from DB, or make a new one
 
   final String id;
   final String title;
