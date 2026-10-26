@@ -1,6 +1,6 @@
 # Favorite Places
 
-Flutter app for IDATA2503 Assignment 5. Save places with a title, photo and location, view them on a map, and keep them after the app is closed.
+A simple Flutter app. Save places with a title, photo and location, view them on a map, and keep them after the app is closed.
 
 ## Features
 - List of saved places with photo and address
@@ -25,5 +25,3 @@ The app needs a Google Maps API key with Maps SDK for Android, Geocoding API and
    flutter pub get
    flutter run
    ```
-
-Based on Section 13 of the Udemy course "Flutter & Dart - The Complete Guide".
