@@ -33,7 +33,7 @@
     },
     {
       "name": "code_assets",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/code_assets-2.0.0",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/code_assets-1.2.1",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -45,7 +45,7 @@
     },
     {
       "name": "crypto",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.7",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/crypto-3.0.8",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -99,7 +99,7 @@
     },
     {
       "name": "hooks",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/hooks-2.2.0",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/hooks-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -117,13 +117,13 @@
     },
     {
       "name": "jni",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/jni-1.0.3",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/jni-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
     {
       "name": "jni_flutter",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/jni_flutter-1.0.3",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/jni_flutter-1.0.4+1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -177,13 +177,13 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.19.0",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/meta-1.18.3",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "objective_c",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/objective_c-9.6.0",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/objective_c-9.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -255,7 +255,7 @@
     },
     {
       "name": "record_use",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/record_use-1.1.1",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/record_use-0.6.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
@@ -327,21 +327,21 @@
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.4.2",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.10"
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-15.3.0",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/vm_service-15.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "web",
-      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.1.1",
+      "rootUri": "file:///C:/Users/ilard/AppData/Local/Pub/Cache/hosted/pub.dev/web-1.1.2",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "3.13"
     },
     {
       "name": "xdg_directories",

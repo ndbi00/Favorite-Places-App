@@ -1,0 +1,46 @@
+# Secrets (API keys)
+*.env
+.env*
+lib/secrets.dart
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# Build output
+build/
+.dart_tool/
+
+# Flutter and Dart generated
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+**/generated_plugin_registrant.dart
+
+# Android generated
+android/.gradle/
+android/captures/
+android/gradlew
+android/gradlew.bat
+android/gradle/wrapper/gradle-wrapper.jar
+android/app/debug/
+android/app/profile/
+android/app/release/
+*.apk
+*.aab
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
