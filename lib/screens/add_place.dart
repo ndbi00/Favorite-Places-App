@@ -20,6 +20,7 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   final _titleController = TextEditingController();
   File? _selectedImage;
   PlaceLocation? _selectedLocation;
+  bool _isSaving = false;
 
   void _showError(String message) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -28,7 +29,7 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
     );
   }
 
-  void _savePlace() {
+  Future<void> _savePlace() async {
     if (!_formKey.currentState!.validate()) return;
 
     if (_selectedImage == null) {
@@ -41,13 +42,20 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
       return;
     }
 
-    ref.read(userPlacesProvider.notifier).addPlace(
-          _titleController.text.trim(),
-          _selectedImage!,
-          _selectedLocation!,
-        );
-
-    Navigator.of(context).pop();
+    setState(() => _isSaving = true);
+    try {
+      await ref.read(userPlacesProvider.notifier).addPlace(
+            _titleController.text.trim(),
+            _selectedImage!,
+            _selectedLocation!,
+          );
+      if (!mounted) return;
+      Navigator.of(context).pop();
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _isSaving = false);
+      _showError('Could not save the place. Try again.');
+    }
   }
 
   @override
@@ -90,8 +98,14 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
               ),
               const SizedBox(height: 16),
               ElevatedButton.icon(
-                onPressed: _savePlace,
-                icon: const Icon(Icons.add),
+                onPressed: _isSaving ? null : _savePlace,
+                icon: _isSaving
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      )
+                    : const Icon(Icons.add),
                 label: const Text('Add Place'),
               ),
             ],
