@@ -1,28 +1,41 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:favorite_places/providers/user_places.dart';
+import 'package:favorite_places/widgets/image_input.dart';
 
 class AddPlaceScreen extends ConsumerStatefulWidget {
   const AddPlaceScreen({super.key});
 
   @override
-  ConsumerState<AddPlaceScreen> createState() {
-    return _AddPlaceScreenState();
-  }
+  ConsumerState<AddPlaceScreen> createState() => _AddPlaceScreenState();
 }
 
 class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _titleController = TextEditingController();
+  File? _selectedImage;
+
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 
   void _savePlace() {
-    final enteredTitle = _titleController.text;
+    if (!_formKey.currentState!.validate()) return;
 
-    if (enteredTitle.isEmpty) {
+    if (_selectedImage == null) {
+      _showError('Please take a picture of the place.');
       return;
     }
 
-    ref.read(userPlacesProvider.notifier).addPlace(enteredTitle);
+    ref
+        .read(userPlacesProvider.notifier)
+        .addPlace(_titleController.text.trim(), _selectedImage!);
 
     Navigator.of(context).pop();
   }
@@ -36,27 +49,39 @@ class _AddPlaceScreenState extends ConsumerState<AddPlaceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Add new Place'),
-      ),
+      appBar: AppBar(title: const Text('Add new Place')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            TextField(
-              decoration: const InputDecoration(labelText: 'Title'),
-              controller: _titleController,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onBackground,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              TextFormField(
+                controller: _titleController,
+                decoration: const InputDecoration(labelText: 'Title'),
+                maxLength: 50,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter a title.';
+                  }
+                  return null;
+                },
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton.icon(
-              onPressed: _savePlace,
-              icon: const Icon(Icons.add),
-              label: const Text('Add Place'),
-            ),
-          ],
+              const SizedBox(height: 10),
+              ImageInput(
+                onPickImage: (image) => _selectedImage = image,
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton.icon(
+                onPressed: _savePlace,
+                icon: const Icon(Icons.add),
+                label: const Text('Add Place'),
+              ),
+            ],
+          ),
         ),
       ),
     );
