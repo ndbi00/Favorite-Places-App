@@ -4,6 +4,10 @@ import 'package:location/location.dart';
 import 'package:favorite_places/models/place.dart';
 import 'package:favorite_places/util/maps.dart';
 
+import 'package:google_maps_flutter/google_maps_flutter.dart' show LatLng;
+
+import 'package:favorite_places/screens/map.dart';
+
 class LocationInput extends StatefulWidget {
   const LocationInput({super.key, required this.onSelectLocation});
 
@@ -68,6 +72,20 @@ class _LocationInputState extends State<LocationInput> {
     await _savePlace(lat, lng);
   }
 
+  Future<void> _selectOnMap() async {
+    final picked = await Navigator.of(context).push<LatLng>(
+      MaterialPageRoute(
+        // Start at the current choice if there is one
+        builder: (ctx) => _pickedLocation == null
+            ? const MapScreen()
+            : MapScreen(location: _pickedLocation!),
+      ),
+    );
+    if (picked == null) return;
+
+    await _savePlace(picked.latitude, picked.longitude);
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget preview = Text(
@@ -115,7 +133,7 @@ class _LocationInputState extends State<LocationInput> {
               label: const Text('Get Current Location'),
             ),
             TextButton.icon(
-              onPressed: null, // Step 4
+              onPressed: _isGettingLocation ? null : _selectOnMap,
               icon: const Icon(Icons.map),
               label: const Text('Select on Map'),
             ),
